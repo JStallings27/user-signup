@@ -7,4 +7,6 @@ app.config['DEBUG'] = True
 
 @app.route("/")
 def index():
-    return render_template()
+    return render_template("homepage.html")
+
+app.run()
