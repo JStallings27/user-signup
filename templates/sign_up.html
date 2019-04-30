@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>User-Signup LC101</title>
+        <h1>Signup</h1>
+    </head>
+    <style>
+        .error { color: red; }
+    </style>
+    <body>
+        <form method='POST'>
+            <label for=username/>*Username</label>
+            <input type="text" name="user" id="username" value='{{user}}' />
+            <p class="error">{{user_error}}</p>
+
+  
+            <label for=password/>*Password</label>
+            <input type="password" name="pass_word" id="password" value='{{pass_word}}' />
+            <p class="error">{{pass_word_error}}</p>
+
+            <label for=verify_password/>*Verify Password</label>
+            <input type="password" name="verify" id="verify_password" value='{{verify}}'/>
+            <p class="error">{{verify_error}}</p>
+
+            <label for=email>Email (optional)</label>
+            <input type="text" name="email_address" id="email" value='{{email_address}}'/>
+            <p class="error">{{email_address_error}}</p>
+            
+            <br>
+
+            <p>* = required</p>
+
+            <input type="submit" value="Submit Query">
+        </form>
+    </body>
+</html>
