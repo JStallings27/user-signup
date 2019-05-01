@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-@app.route("/", methods=['POST'])
+@app.route("/")
 def display_signup_form():
     return render_template('sign_up.html', user='', user_error='', pass_word='',pass_word_error='',
     verify='', verify_error='', email_address='', email_address_error='' )
@@ -113,16 +113,17 @@ def sign_validation():
     
 
     if not user_error and not pass_word_error and not verify_error and not email_address_error:
-        return redirect("/welcome")
+        new_user = {user}
+        return redirect("/welcome?new_user={0}".format(new_user))
     else:
         return render_template('sign_up.html', user=user, user_error=user_error, pass_word=pass_word, pass_word_error=pass_word_error, verify=verify, verify_error=verify_error, 
         email_address=email_address, email_address_error=email_address_error)
 
 
-@app.route("/welcome", methods=['POST'])
+@app.route("/welcome")
 def welcome():
-    verified = request.args.get('user')
-    return '<h1></h1>'
+    new_user = request.args.get('new_user')
+    return render_template('welcome.html', new_user=user )
 
 
 app.run()
