@@ -114,7 +114,7 @@ def sign_validation():
 
     if not user_error and not pass_word_error and not verify_error and not email_address_error:
         new_user = {user}
-        return redirect("/welcome?new_user={0}".format(new_user))
+        return redirect("/welcome?user={0}".format(user))
     else:
         return render_template('sign_up.html', user=user, user_error=user_error, pass_word=pass_word, pass_word_error=pass_word_error, verify=verify, verify_error=verify_error, 
         email_address=email_address, email_address_error=email_address_error)
@@ -122,8 +122,8 @@ def sign_validation():
 
 @app.route("/welcome")
 def welcome():
-    new_user = request.args.get('new_user')
-    return render_template('welcome.html', new_user=user )
+    user = request.args.get('user')
+    return render_template('welcome.html', user=user )
 
 
 app.run()
